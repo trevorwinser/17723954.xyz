@@ -1,0 +1,187 @@
+:root {
+  --bg-color: #ffffff;
+  --text-main: #111111;
+  --text-muted: #666666;
+  --accent: #0055cc;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --border-color: #eaeaea;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-main: #f5f5f5;
+  --text-muted: #888888;
+  --accent: #4da6ff;
+  --nav-bg: rgba(18, 18, 18, 0.9);
+  --border-color: #333333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a:hover {
+  color: var(--text-main);
+}
+.floating-theme-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--nav-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.floating-theme-toggle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.floating-theme-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 2rem 2rem;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  position: relative;
+  background: var(--bg-color);
+}
+
+/* Scramble Text Headline */
+#scramble-headline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  letter-spacing: 5px;
+  min-height: clamp(4rem, 10vw, 8rem);
+}
+
+/* The scrambling characters should be distinctly muted, but without glowing */
+.scramble-dim {
+    opacity: 0.4;
+    color: var(--text-muted);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+  animation-delay: 1.2s;
+}
+
+/* Placeholders */
+.placeholder-section {
+  background: var(--bg-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.placeholder-section h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+.placeholder-section p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1.2rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .nav-links {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
